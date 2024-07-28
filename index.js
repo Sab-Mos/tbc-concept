@@ -26,11 +26,19 @@ const navButtons = document.querySelectorAll(".header-nav button");
 
 navButtons.forEach((button) =>
   button.addEventListener("click", (e) => {
-    navButtons.forEach((button) => button.classList.remove("clicked"));
-    button.classList.add("clicked");
+    if (button.classList.contains("clicked")) {
+      button.classList.remove("clicked");
+    } else {
+      navButtons.forEach((btn) => btn.classList.remove("clicked"));
+      button.classList.add("clicked");
+    }
     e.stopPropagation();
   })
 );
+
+document.addEventListener("click", (e) => {
+  navButtons.forEach((btn) => btn.classList.remove("clicked"));
+});
 
 const cookieButton = document.querySelector(".cookie-box .cookie-text");
 const cookieBox = cookieButton.parentElement;
@@ -64,10 +72,6 @@ dropdownToggles.forEach((toggle) => {
       this.classList.add("clicked");
     }
   });
-});
-
-document.addEventListener("click", (e) => {
-  navButtons.forEach((btn) => btn.classList.remove("clicked"));
 });
 
 const popUpMenu = document.querySelector(".popUp-menu");
@@ -244,30 +248,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const slider = document.getElementById("slider");
-  const prevArrow = document.getElementById("prevArrow");
-  const nextArrow = document.getElementById("nextArrow");
+function initializeCarousel(prevId, nextId, carouselId, scrollAmount) {
+  const prev = document.getElementById(prevId);
+  const next = document.getElementById(nextId);
+  const carousel = document.getElementById(carouselId);
 
-  prevArrow.addEventListener("click", () => {
-    slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
-  });
+  function updateArrowColors(activeArrow) {
+    prev.classList.remove("active");
+    next.classList.remove("active");
 
-  nextArrow.addEventListener("click", () => {
-    slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
-  });
+    prev.classList.add("inactive");
+    next.classList.add("inactive");
 
-  // Hide arrows if viewport width is more than 1439px
-  function handleResize() {
-    if (window.innerWidth > 1439) {
-      prevArrow.style.display = "none";
-      nextArrow.style.display = "none";
-    } else {
-      prevArrow.style.display = "block";
-      nextArrow.style.display = "block";
+    if (activeArrow === "prev") {
+      next.classList.add("active");
+      prev.classList.remove("inactive");
+    } else if (activeArrow === "next") {
+      prev.classList.add("active");
+      next.classList.remove("inactive");
     }
   }
 
-  window.addEventListener("resize", handleResize);
-  handleResize();
-});
+  prev.addEventListener("click", () => {
+    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    updateArrowColors("next");
+  });
+
+  next.addEventListener("click", () => {
+    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    updateArrowColors("prev");
+  });
+}
+
+initializeCarousel("prev", "next", "carousel", 700);
+
+initializeCarousel("offers-prev", "offers-next", "offers-carousel", 100);
