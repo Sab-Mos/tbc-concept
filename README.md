@@ -48,7 +48,6 @@ Below you can see the design for different devices.
 ![image](https://github.com/user-attachments/assets/dda7bc08-7954-49f0-9a94-0f2130c1b385)
 
 
-![image](https://github.com/user-attachments/assets/df1af394-d359-4842-b06f-04e13f33a120)
 
 ![image](https://github.com/user-attachments/assets/46fa120c-5cc3-448c-bcee-92287ce3bb93)
 
