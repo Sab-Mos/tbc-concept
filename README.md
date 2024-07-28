@@ -43,8 +43,6 @@ Below you can see the design for different devices.
 
 ![image](https://github.com/user-attachments/assets/1c9ee8e0-5696-485d-a45d-1bbbf5558f72)
 
-![image](https://github.com/Sab-Mos/ExploreEra-react/assets/131381168/f83f8642-a91a-479a-9cb4-3e57b09ee001)
-
 ![image](https://github.com/user-attachments/assets/2a953f70-43ea-4004-a947-28ee71a360f5)
 
 ![image](https://github.com/user-attachments/assets/dda7bc08-7954-49f0-9a94-0f2130c1b385)
